@@ -1,7 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const _ = require('lodash');
+const {mongoose} = require('./../db/mongoose');
+const {Trip} = require('./../models/Trip');
 
 router.post('/trip/create', async(req, res) => {
+    let body = _.pick(req.body, ['name', 'locations']);
+    let trip = new Trip(body);
+
+
     res.send("Created new trip");
 });
 
