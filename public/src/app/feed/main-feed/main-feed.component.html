@@ -1,0 +1,11 @@
+<div class="main-container">
+  <div class="feed-header">
+    <p class="feed-title">Feed</p>
+  </div>
+  <div class="post-container">
+    <div class="post" *ngFor="let post of feed">
+      <img src="../../../../{{post.picture}}">
+      <p class="post-text">{{post.text}}</p>
+    </div>
+  </div>
+</div>
