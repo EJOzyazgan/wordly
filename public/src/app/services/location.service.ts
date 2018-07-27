@@ -24,4 +24,12 @@ export class LocationService {
     return this.http.post(this.locationUrl + '/post/create', {locationID: locationId, text: text, picture: picture});
   }
 
+  deletePost(postId){
+    return this.http.post(this.locationUrl + '/post/delete', {postID: postId});
+  }
+
+  deleteLocation(locationId){
+    return this.http.post(this.locationUrl + '/delete', {locationID: locationId});
+  }
+
 }

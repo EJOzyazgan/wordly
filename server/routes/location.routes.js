@@ -76,10 +76,8 @@ router.post('/delete', async(req, res) => {
 
     });
     Location.deleteOne({_id: req.body.locationID}).then(loc => {
-
+        res.send(loc);
     });
-
-    res.send("Done");
 });
 
 router.post('/post/delete', async(req, res) => {

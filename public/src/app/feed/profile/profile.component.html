@@ -26,6 +26,7 @@
       <div class="trip-container" *ngFor="let trip of trips">
         <div class="trip" (click)="setTrip(trip)">
           <p>Trip: {{trip.name}}</p>
+          <button class="delete-trip-btn" (click)="deleteTrip(trip)">Delete</button>
         </div>
         <div class="locations-container" *ngIf="isCurrentTrip(trip)">
           <div>

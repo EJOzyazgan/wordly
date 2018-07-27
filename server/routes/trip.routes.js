@@ -30,8 +30,8 @@ router.post('/get/userId', async(req, res) => {
 });
 
 router.post('/delete', async(req, res) => {
-    Trip.deleteOne({_id: req.body.tripID}).then(trips => {
-
+    Trip.deleteOne({_id: req.body.tripID}).then(trip => {
+        res.send(trip);
     });
     Location.find({tripID: req.body.tripID}).then(locs => {
         for(let loc of locs) {
@@ -43,7 +43,6 @@ router.post('/delete', async(req, res) => {
             });
         }
     });
-    res.send("Done");
 });
 
 module.exports = router;

@@ -16,4 +16,7 @@ export class TripService {
     return this.http.post(this.tripUrl + '/get/userId', {userID: userId});
   }
 
+  deleteTrip(tripId) {
+    return this.http.post(this.tripUrl + '/delete', {tripID: tripId});
+  }
 }
