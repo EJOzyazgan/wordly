@@ -4,6 +4,7 @@ import {Location} from "../../models/location";
 import {FileUploader} from 'ng2-file-upload/ng2-file-upload';
 import {environment} from "../../../environments/environment";
 import {AlertService} from "ngx-alerts";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-location',
@@ -21,7 +22,8 @@ export class LocationComponent implements OnInit {
   uploader: FileUploader = new FileUploader({url: environment.locationUrl + '/upload', itemAlias: 'photo'});
 
   constructor(private locationService: LocationService,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -65,5 +67,19 @@ export class LocationComponent implements OnInit {
     if (this.newPostPic !== "" || this.newPostText !== "") {
       this.uploader.uploadAll();
     }
+  }
+
+  deletePost(post){
+    this.locationService.deletePost(post._id).subscribe((post) => {
+      this.alertService.success("Post Deleted");
+      this.getPosts();
+    })
+  }
+
+  deleteLocation(){
+    this.locationService.deleteLocation(this.location._id).subscribe((post) => {
+      this.alertService.success("Location Deleted");
+      return this.router.navigate(["/feed/profile"]);
+    })
   }
 }

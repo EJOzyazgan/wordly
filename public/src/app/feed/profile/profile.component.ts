@@ -84,6 +84,14 @@ export class ProfileComponent implements OnInit {
     this.createNewTrip = false;
   }
 
+  deleteTrip(trip){
+    console.log(trip);
+    this.tripService.deleteTrip(trip._id).subscribe((trip) => {
+      this.alertService.success("Trip Deleted");
+      this.getTrips();
+    });
+  }
+
   addLocation() {
     if (this.newTripLocationName.trim() !== "") {
       this.newTripLocations.push(this.newTripLocationName);
