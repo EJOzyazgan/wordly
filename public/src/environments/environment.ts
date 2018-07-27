@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  tripUrl: "http://localhost:3000/trip"
+  tripUrl: "http://localhost:3000/trip",
+  locationUrl: "http://localhost:3000/location"
 };
 
 /*

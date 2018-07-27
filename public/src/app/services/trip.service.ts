@@ -13,7 +13,7 @@ export class TripService {
   }
 
   getTrips(userId){
-    return this.http.post(this.tripUrl + '/get/userId', {userId: userId});
+    return this.http.post(this.tripUrl + '/get/userId', {userID: userId});
   }
 
 }
