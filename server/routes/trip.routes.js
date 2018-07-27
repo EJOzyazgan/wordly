@@ -32,14 +32,6 @@ router.delete('/delete', async(req, res) => {
     res.send("Deleted trip");
 });
 
-router.post('/location/create', async(req, res) => {
-    res.send("Added new location to trip");
-});
-
-router.delete('/location/delete', async(req, res) => {
-    res.send("Deleted location from trip");
-});
-
 router.post('/picture/add', async(req, res) => {
     res.send("Added new picture to trip");
 });
