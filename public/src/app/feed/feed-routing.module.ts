@@ -5,6 +5,8 @@ import {ProfileComponent} from "./profile/profile.component";
 import {LocationComponent} from "./location/location.component";
 import {FriendsComponent} from "./friends/friends.component";
 import {MainFeedComponent} from "./main-feed/main-feed.component";
+import {FriendProfileComponent} from "./friend-profile/friend-profile.component";
+import {FriendLocationComponent} from "./friend-location/friend-location.component";
 
 const profileRoutes: Routes = [
   {
@@ -13,6 +15,8 @@ const profileRoutes: Routes = [
       {path: 'location', component: LocationComponent},
       {path: 'friends', component: FriendsComponent},
       {path: 'mainFeed', component: MainFeedComponent},
+      {path: 'profile/friend', component: FriendProfileComponent},
+      {path: 'location/friend', component: FriendLocationComponent},
     ]
   },
 ];

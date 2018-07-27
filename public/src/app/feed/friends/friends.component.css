@@ -1,0 +1,31 @@
+.friends-header {
+  width: 90%;
+  margin: auto;
+}
+
+.friends-title {
+  width: fit-content;
+  margin: auto;
+  font-size: 30px;
+  font-family: Verdana, serif;
+}
+
+.friend-pic {
+  width: 100px;
+  height: 100px;
+}
+
+.friend-name {
+  margin: auto 10px;
+}
+
+.friends {
+  margin: 15px;
+  width: 90%;
+}
+
+.friend {
+  display: flex;
+  cursor: pointer;
+
+}

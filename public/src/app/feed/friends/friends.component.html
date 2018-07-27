@@ -1,3 +1,28 @@
-<p>
-  friends works!
-</p>
+<div class="main-container">
+  <div class="friends-header">
+    <p class="friends-title">Friends</p>
+    <form autocomplete="off" action="/action_page.php">
+      <div class="autocomplete" style="width:300px;">
+        <input list="users" id="myInput" type="text" name="myCountry" placeholder="Name">
+        <datalist id="users">
+          <option *ngFor="let user of users" value="{{user.name}}" ></option>
+        </datalist>
+      </div>
+      <button type="submit">Add Friend</button>
+    </form>
+    <hr>
+  </div>
+
+  <div class="friends-container">
+    <div class="friends" *ngFor="let friend of friends">
+      <div (click)="seeProfile(friend)">
+        <div class="friend">
+          <img class="friend-pic" src="{{getUserPic(friend)}}">
+          <p class="friend-name">{{friend.name}}</p>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
+

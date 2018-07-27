@@ -1,0 +1,10 @@
+<div class="main-container">
+  <p>{{location.name}}</p>
+
+  <div class="post-container">
+    <div class="post" *ngFor="let post of posts">
+      <p>{{post.text}}</p>
+      <img src="../../../../{{post.picture}}">
+    </div>
+  </div>
+</div>
