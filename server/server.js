@@ -4,7 +4,9 @@ const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
 const app = express();
 
-const trip = require('./trip.routes');
+const trip = require('./routes/trip.routes');
+const location = require('./routes/location.routes');
+const user = require('./routes/user.routes');
 
 app.use(bodyParser.json());
 
@@ -17,6 +19,8 @@ app.use(function (req,res,next) {
 });
 
 app.use('/trip', trip);
+app.use('/location', location);
+
 
 app.listen(port, () => {
     console.log(`server is listening on ${port}`)
