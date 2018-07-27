@@ -12,7 +12,16 @@ router.post('/create', async(req, res) => {
         userID: req.body.userID
     });
 
-    trip.save();
+    trip.save().then(trip => {
+        for(let locName of req.body.locations){
+            let loc = new Location({
+                name: locName,
+                tripID: trip._id
+            });
+            loc.save();
+        }
+        res.send(trip);
+    });
 });
 
 router.delete('/delete', async(req, res) => {
