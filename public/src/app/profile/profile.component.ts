@@ -9,7 +9,7 @@ import {TripService} from "../services/trip.service";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  trips = [];
+  trips;
   currentTrip = new Trip(null);
 
   newTripName = "";
@@ -21,9 +21,14 @@ export class ProfileComponent implements OnInit {
   constructor(private tripService: TripService) {}
 
   ngOnInit() {
-    this.trips = [new Trip("1", "1","Trip1",[new Location("1",  "1","Loc1",["Pic1"])]),
-      new Trip("2",  "1","Trip2",[new Location("1", "2","Loc1",["Pic1"])])];
+    this.getTrips();
     console.log(this.trips);
+  }
+
+  getTrips(){
+    this.tripService.getTrips(this.userId).subscribe((trips) => {
+      this.trips = trips;
+    })
   }
 
   toggleCreateTrip(){
@@ -44,7 +49,9 @@ export class ProfileComponent implements OnInit {
 
   createTrip(){
     if(this.newTripName !== "" && this.newTripLocations !== []){
-      this.tripService.createTrip(this.userId, this.newTripName, this.newTripLocations);
+      this.tripService.createTrip(this.userId, this.newTripName, this.newTripLocations).subscribe((trip) =>{
+        console.log(trip);
+      });
 
     }
   }
