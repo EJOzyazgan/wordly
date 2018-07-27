@@ -1,7 +1,7 @@
 <div class="main-container">
   <p>{{location.name}}</p>
   <button class="new-post-btn" type="button" (click)="toggleCreatePost()">Add Post</button>
-  <button class="delete-location-btn" type="button" (click)="deleteLocation(post)">Delete Location</button>
+  <button class="delete-location-btn" type="button" (click)="deleteLocation()">Delete Location</button>
 
   <div *ngIf="createNewPost" class="create-post-dialog-container">
     <div class="create-post-dialog">
