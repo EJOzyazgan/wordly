@@ -9,7 +9,7 @@ export class TripService {
   constructor(private http: HttpClient) { }
 
   createTrip(userId, name, locations) {
-    return this.http.post(this.tripUrl + '/create', {userId: userId, name: name, locations: locations});
+    return this.http.post(this.tripUrl + '/create', {userID: userId, name: name, locations: locations});
   }
 
   getTrips(userId){

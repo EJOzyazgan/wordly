@@ -27,6 +27,12 @@ router.post('/create', async(req, res) => {
 
 });
 
+router.post('/get/userId', async(req, res) => {
+   Trip.find({userID: req.body.userID}).then(trips => {
+       res.send(trips);
+   })
+});
+
 router.delete('/delete', async(req, res) => {
     res.send("Deleted trip");
 });
