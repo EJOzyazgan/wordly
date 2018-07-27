@@ -23,7 +23,8 @@
               "public/src/assets"
             ],
             "styles": [
-              "public/src/styles.css"
+              "public/src/styles.css",
+              "node_modules/font-awesome/css/font-awesome.min.css"
             ],
             "scripts": []
           },
@@ -72,7 +73,8 @@
             "tsConfig": "public/src/tsconfig.spec.json",
             "karmaConfig": "public/src/karma.conf.js",
             "styles": [
-              "public/src/styles.css"
+              "public/src/styles.css",
+              "node_modules/font-awesome/css/font-awesome.min.css"
             ],
             "scripts": [],
             "assets": [
