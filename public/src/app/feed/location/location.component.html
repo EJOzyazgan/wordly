@@ -1,7 +1,10 @@
 <div class="main-container">
-  <p>{{location.name}}</p>
-  <button class="new-post-btn" type="button" (click)="toggleCreatePost()">Add Post</button>
-  <button class="delete-location-btn" type="button" (click)="deleteLocation(post)">Delete Location</button>
+
+  <div class="header-info">
+    <p class="location-name">{{location.name}}</p>
+    <button class="new-post-btn" type="button" (click)="toggleCreatePost()">Add Post</button>
+    <button class="delete-location-btn" type="button" (click)="deleteLocation(post)">Delete Location</button>
+  </div>
 
   <div *ngIf="createNewPost" class="create-post-dialog-container">
     <div class="create-post-dialog">
@@ -16,9 +19,12 @@
   </div>
   <div class="post-container">
     <div class="post" *ngFor="let post of posts">
-      <p>{{post.text}}</p>
-      <img src="../../../../{{post.picture}}">
-      <br>
+      <div class = "img-resizer">
+        <img src="../../../../{{post.picture}}">
+      </div>
+      <div class = "text-resizer">
+        <p>{{post.text}}</p>
+      </div>
       <button class="delete-post-btn" type="button" (click)="deletePost(post)">Delete Post</button>
     </div>
   </div>
