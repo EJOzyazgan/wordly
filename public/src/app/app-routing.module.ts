@@ -4,18 +4,20 @@ import {ProfileComponent} from "./profile/profile.component";
 import {LocationComponent} from "./location/location.component";
 
 const appRoutes: Routes = [
-    { path: '', pathMatch: 'full', redirectTo: 'profile' },
-    { path: 'profile', component: ProfileComponent },
-    { path: 'location', component: LocationComponent },
+  {path: '', pathMatch: 'full', redirectTo: 'profile'},
+  {path: 'profile', component: ProfileComponent},
+  {path: 'location', component: LocationComponent},
+  {path: 'auth', loadChildren: './auth/auth.module#AuthModule'},
 
 ];
 
 @NgModule({
-    imports: [
-        RouterModule.forRoot(appRoutes)
-    ],
-    exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(appRoutes)
+  ],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
 
 export const routingComponents = [ProfileComponent, LocationComponent];

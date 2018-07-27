@@ -1,5 +1,3 @@
-import {Location} from "./location";
-
 export class Trip {
   constructor(
     public _id?: string,

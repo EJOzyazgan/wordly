@@ -1,0 +1,24 @@
+<div class="container-body">
+  <div *ngIf="show" class="infoPopup">
+    <i (click)="showTos()" class="fa fa-close"></i>
+    <div class="info">
+      <p><strong>Website Terms of Use</strong></p>
+    </div>
+  </div>
+
+  <div class="login-container">
+    <form class="login-form">
+      <input type="email" name="first-name" placeholder="Enter Name" [(ngModel)]="user.name" class="input">
+      <input type="email" name="email" placeholder="Enter Email" [(ngModel)]="user.email" class="input">
+      <input type="password" name="password" placeholder="Enter Password" [(ngModel)]="user.password" class="input">
+      <input type="password" name="re-enter-password" placeholder="Re-enter Password" [(ngModel)]="tempPassword"
+             class="input">
+      <input type="checkbox" name="tos" class="tos-check" [(ngModel)]="agreeTos">
+      <label class="tosLabel" (click)="showTos()">I accept the Terms and Conditions</label>
+      <button class="button" (click)="signup()" type="submit">Sign Up</button>
+      <div class="router-links">
+        <div class="reset-password-link" routerLink="/auth/login">Login</div>
+      </div>
+    </form>
+  </div>
+</div>
