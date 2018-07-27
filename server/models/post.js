@@ -15,6 +15,6 @@ let PostSchema = new mongoose.Schema({
     }
 });
 
-let Post = mongoose.model('Trip', PostSchema);
+let Post = mongoose.model('Post', PostSchema);
 
 module.exports = {Post};
