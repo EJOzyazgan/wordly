@@ -10,7 +10,7 @@ import {AlertsService} from "angular-alert-module";
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    user = new User();
+    user = new User(null);
     disableLogin = false;
 
     constructor(private alertService: AlertsService,
@@ -28,12 +28,12 @@ export class LoginComponent implements OnInit {
         if (this.user.email !== null && this.user.email !== '' &&
             this.user.password !== null && this.user.password !== '') {
 
-            this.authService.checkExists(this.user).subscribe(users => {
+            this.authService.checkExists(this.user.email).subscribe(users => {
                 if (!users[0]) {
                     return this.alertService.setMessage("User does not exist", 'error');
                 }
 
-                this.authService.loginUser(this.user).subscribe(user => {
+                this.authService.loginUser(this.user.email,this.user.password).subscribe(user => {
                     this.user = user['user'];
                     localStorage.setItem('token', user['token']);
                     localStorage.setItem('userId', user['userId']);

@@ -13,8 +13,8 @@ export class AuthService {
         return this.http.post(this.authUrl + '/create', user);
     }
 
-    loginUser(user) {
-        return this.http.post(this.authUrl + '/login', user);
+    loginUser(email, password) {
+        return this.http.post(this.authUrl + '/login', {email: email, password: password});
     }
 
     updateUser(user) {
@@ -27,7 +27,7 @@ export class AuthService {
     }
 
     getUser(id){
-        return this.http.post(this.authUrl + '/get', {userId: id});
+        return this.http.post(this.authUrl + '/get', {userID: id});
     }
 
     getByToken(token){
