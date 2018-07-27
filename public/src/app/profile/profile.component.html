@@ -29,7 +29,7 @@
         </div>
         <div class="locations-container" *ngIf="isCurrentTrip(trip)">
           <div>
-            <div class="location-container" *ngFor="let location of trip.locations">
+            <div class="location-container" *ngFor="let location of locations">
               <div class="location" (click)="openLocation(location)">
                 <p>Name: {{location.name}}</p>
               </div>

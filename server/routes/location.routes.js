@@ -9,9 +9,7 @@ router.post('/create', async(req, res) => {
         name: req.body.name,
         tripID: req.body.tripID
     });
-
     location.save();
-    res.send(location);
 });
 
 router.post('/post/create', async(req, res) => {
@@ -31,8 +29,16 @@ router.post('/get/posts', async(req, res) => {
     })
 });
 
-router.delete('/delete', async(req, res) => {
-    res.send("Deleted location from trip");
+router.post('/get/tripId', async(req, res) => {
+    Location.find({tripID: req.body.tripID}).then(locations => {
+        res.send(locations);
+    })
+});
+
+router.post('/get/location', async(req, res) => {
+    Location.findById(req.body.locationID).then(location => {
+        res.send(location);
+    })
 });
 
 module.exports = router;
