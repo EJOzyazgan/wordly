@@ -35,7 +35,7 @@ router.post('/upload', async (req, res) => {
         }
     });
 
-    var upload = multer({ storage: storage }).single('photo');
+    let upload = multer({ storage: storage }).single('photo');
     let path = "";
     await upload(req, res, function (err) {
         if (err) {

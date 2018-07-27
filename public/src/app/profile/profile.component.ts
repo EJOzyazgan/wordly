@@ -4,6 +4,8 @@ import {Location} from "../models/location";
 import {TripService} from "../services/trip.service";
 import {LocationService} from "../services/location.service";
 import {Router} from "@angular/router";
+import {AuthService} from "../services/auth.service";
+import {assertTSConstructSignatureDeclaration} from "babel-types";
 
 @Component({
   selector: 'app-profile',
@@ -19,19 +21,24 @@ export class ProfileComponent implements OnInit {
   newTripLocations = [];
   newTripLocationName = "";
   createNewTrip = false;
-  userId = "1";
+  user;
 
   constructor(private tripService: TripService,
               private locationService: LocationService,
-              private router: Router) {
+              private router: Router,
+              private authService: AuthService) {
   }
 
   ngOnInit() {
-    this.getTrips();
+    this.authService.getUser(localStorage.getItem('userId')).subscribe((user) => {
+      this.user = user;
+      console.log(this.user);
+      this.getTrips();
+    })
   }
 
   getTrips() {
-    this.tripService.getTrips(this.userId).subscribe((trips) => {
+    this.tripService.getTrips(this.user._id).subscribe((trips) => {
       this.trips = trips;
     });
   }
@@ -62,7 +69,7 @@ export class ProfileComponent implements OnInit {
 
   createTrip() {
     if (this.newTripName !== "" && this.newTripLocations !== []) {
-      this.tripService.createTrip(this.userId, this.newTripName, this.newTripLocations).subscribe((trip) => {
+      this.tripService.createTrip(this.user._id, this.newTripName, this.newTripLocations).subscribe((trip) => {
         this.getTrips();
       });
 

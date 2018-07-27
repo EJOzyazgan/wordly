@@ -1,0 +1,90 @@
+button:disabled,
+button[disabled]{
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #fdfdfd;
+}
+
+.button {
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+    margin: 15px auto 0 auto;
+    padding: 14px 0 15px 0;
+    width: 100%;
+}
+
+.container-body {
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
+.infoPopup {
+    position: absolute;
+    z-index: 5;
+    background-color: #DFE3E6;
+    margin: 60px;
+    width: 80%;
+    height: 80%;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: left;
+}
+
+.info {
+    overflow-y: scroll;
+    height: 95%;
+}
+
+.input {
+    background-color: #f6f6f6;
+    border: 1px solid rgba(0,0,0,.1);
+    box-sizing: border-box;
+    border-radius: 6px;
+    color: #888;
+    font-size: 18px;
+    font-weight: 300;
+    height: 50px;
+    margin: 10px auto 0 auto;
+    padding-left: 10px;
+    width: 100%;
+}
+
+.login-container {
+    margin: 100px auto 0 auto;
+    max-width: 350px;
+    padding: 20px;
+    width: fit-content;
+}
+
+.fa-close:hover{
+    cursor: pointer;
+}
+
+.router-links {
+    display: flex;
+}
+
+.reset-password-link {
+    margin: 10px auto 0 auto;
+    text-align: center;
+    color: #0E75AF;
+    text-underline: #0E75AF;
+    text-decoration: underline;
+    width: max-content;
+}
+
+.reset-password-link:hover {
+    cursor: pointer;
+}
+
+.tos-check{
+    margin: 10px;
+}
+
+.tosLabel:hover{
+    color: #0E75AF;
+    cursor: pointer;
+}

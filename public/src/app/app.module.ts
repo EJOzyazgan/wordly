@@ -8,6 +8,8 @@ import {TripService} from "./services/trip.service";
 import {HttpClientModule} from "@angular/common/http";
 import {LocationService} from "./services/location.service";
 import {FileSelectDirective, FileUploadModule} from 'ng2-file-upload';
+import {AuthService} from "./services/auth.service";
+import {AlertsModule, AlertsService} from "angular-alert-module";
 
 @NgModule({
   declarations: [
@@ -19,11 +21,14 @@ import {FileSelectDirective, FileUploadModule} from 'ng2-file-upload';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    AlertsModule.forRoot(),
     HttpClientModule
   ],
   providers: [
     TripService,
-    LocationService
+    LocationService,
+    AuthService,
+    AlertsService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,13 @@
+<div class="container-body">
+  <div class="login-container">
+    <form class="login-form">
+      <input type="email" name="email" placeholder="Username" [(ngModel)]="user.email" class="input">
+      <input type="password" name="password" placeholder="Password" [(ngModel)]="user.password" class="input">
+      <button class="button" (click)="login()" type="submit">Login</button>
+      <div class="router-links">
+        <div class="reset-password-link" routerLink="/auth/signup">Sign Up</div>
+        <div class="reset-password-link" routerLink="/auth/forgot-password">Forgot Password</div>
+      </div>
+    </form>
+  </div>
+</div>
