@@ -8,9 +8,11 @@
       <input type="text" placeholder="Trip Name:" class="trip-name-input" [(ngModel)]="newTripName">
       <br>
       <div class="trip-locations">
-        <p *ngFor="let location of newTripLocations">{{location}}</p>
+        <div>
+          <p class = "location-names" *ngFor="let location of newTripLocations">{{location}}</p>
+        </div>
         <button class="add-location-btn" (click)="addLocation()">Add Location</button>
-        <input type="text" placeholder="Location Name:" class="trip-name-input" [(ngModel)]="newTripLocationName">
+        <input type="text" placeholder="Location Name:" class="location-name-input" [(ngModel)]="newTripLocationName">
       </div>
       <br>
       <button class="create-trip-btn" (click)="createTrip()">Create</button>
@@ -24,15 +26,17 @@
   <div class="trips-container">
     <div class="trip-list">
       <div class="trip-container" *ngFor="let trip of trips">
-        <div class="trip" (click)="setTrip(trip)">
-          <p>Trip: {{trip.name}}</p>
+        <div class="trip-name" (click)="setTrip(trip)">
+          {{trip.name}}
           <button class="delete-trip-btn" (click)="deleteTrip(trip)">Delete</button>
         </div>
         <div class="locations-container" *ngIf="isCurrentTrip(trip)">
           <div>
             <div class="location-container" *ngFor="let location of locations">
-              <div class="location" (click)="openLocation(location)">
-                <p>Location: {{location.name}}</p>
+              <div>
+              <button class="location" (click)="openLocation(location)">
+                {{location.name}}
+              </button>
               </div>
             </div>
           </div>
