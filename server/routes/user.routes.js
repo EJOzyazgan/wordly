@@ -3,6 +3,7 @@ const router = express.Router();
 const {mongoose, ObjectID} = require('./../db/mongoose');
 const {User} = require('../models/user');
 const _ = require('lodash');
+const {authenticate} = require('./../middleware/authenticate');
 
 router.post('/create', async(req, res) => {
     let user = new User({
@@ -49,6 +50,14 @@ router.post('/get', (req, res) => {
     }).catch((e) => {
         res.status(400).send(e);
     })
+});
+
+router.delete('/me/token', authenticate, (req, res) => {
+    req.user.removeToken(req.token).then(() => {
+        res.status(200).send();
+    }, () => {
+        res.status(400).send();
+    });
 });
 
 module.exports = router;
