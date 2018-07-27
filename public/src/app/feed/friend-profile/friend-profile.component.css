@@ -1,0 +1,25 @@
+.trip-container{
+  border: gray 1px solid;
+}
+
+.trip{
+  width: 100%;
+  cursor: pointer;
+}
+
+.location{
+  width: 100%;
+  cursor: pointer;
+}
+
+.friend-header {
+  width: 90%;
+  margin: auto;
+}
+
+.friend-title {
+  width: fit-content;
+  margin: auto;
+  font-size: 30px;
+  font-family: Verdana, serif;
+}

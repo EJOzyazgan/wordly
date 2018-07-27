@@ -5,7 +5,7 @@ const {User} = require('../models/user');
 const _ = require('lodash');
 const {authenticate} = require('./../middleware/authenticate');
 
-router.post('/create', async(req, res) => {
+router.post('/create', async (req, res) => {
     let user = new User({
         name: req.body.name,
         email: req.body.email,
@@ -30,7 +30,7 @@ router.post('/login', async (req, res) => {
                 user: user
             });
         });
-    }).catch((e,doc) => {
+    }).catch((e, doc) => {
         console.log('Hello');
         res.status(400).send(e);
     });
@@ -50,6 +50,33 @@ router.post('/get', (req, res) => {
     }).catch((e) => {
         res.status(400).send(e);
     })
+});
+
+router.post('/get/users', (req, res) => {
+    User.find({_id: {$ne: req.body.userID}}).then((user) => {
+        res.send(user);
+    }).catch((e) => {
+        res.status(400).send(e);
+    });
+});
+
+router.post('/get/friends', (req, res) => {
+    User.findById(req.body.userID).then((user) => {
+        User.find({'_id': { $in: user.friends}}).then((friends) => {
+            res.send(friends);
+        });
+    }).catch((e) => {
+        res.status(400).send(e);
+    });
+});
+
+router.post('/add/friend', (req, res) => {
+    User.findById(req.body.userID).then((user) => {
+        user.friends.push(req.body.friendID);
+        user.save().then((user) => res.send(user));
+    }).catch((e) => {
+        res.status(400).send(e);
+    });
 });
 
 router.delete('/me/token', authenticate, (req, res) => {
