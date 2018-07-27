@@ -30,7 +30,7 @@
           {{trip.name}}
           <button class="delete-trip-btn" (click)="deleteTrip(trip)">Delete</button>
           <button class="add-location-btn" (click)="addNewLocation(trip)">Add Location</button>
-          <input type="text" placeholder="Trip Name:" class="trip-name-input" [(ngModel)]="newLocName">
+          <input type="text" placeholder="Location Name:" class="trip-name-input" [(ngModel)]="newLocName">
         </div>
         <div class="locations-container" *ngIf="isCurrentTrip(trip)">
           <div>
