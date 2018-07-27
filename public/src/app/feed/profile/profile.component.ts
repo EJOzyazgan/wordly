@@ -22,6 +22,9 @@ export class ProfileComponent implements OnInit {
   createNewTrip = false;
   user;
 
+  newLocName = "";
+  newLocation = false;
+
   constructor(private tripService: TripService,
               private locationService: LocationService,
               private router: Router,
@@ -49,8 +52,20 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  addNewLocation(trip) {
+    if(this.newLocName !== ""){
+      this.locationService.createLocation(trip._id, this.newLocName).subscribe((locations) => {
+        this.getLocations(trip);
+      });
+    }
+  }
+
   toggleCreateTrip() {
     this.createNewTrip = !this.createNewTrip;
+  }
+
+  toggleCreateLoc() {
+    this.newLocation = !this.newLocation;
   }
 
   isCurrentTrip(trip) {
