@@ -16,6 +16,10 @@ export class LocationService {
     return this.http.post(this.locationUrl + '/get/location', {locationID: locationId});
   }
 
+  createLocation(tripId, name){
+    return this.http.post(this.locationUrl + '/create', {tripID: tripId, name: name});
+  }
+
   getPosts(locationId){
     return this.http.post(this.locationUrl + '/get/posts', {locationID: locationId});
   }
