@@ -8,9 +8,11 @@
       <input type="text" placeholder="Trip Name:" class="trip-name-input" [(ngModel)]="newTripName">
       <br>
       <div class="trip-locations">
-        <p *ngFor="let location of newTripLocations">{{location}}</p>
+        <div>
+          <p class = "location-names" *ngFor="let location of newTripLocations">{{location}}</p>
+        </div>
         <button class="add-location-btn" (click)="addLocation()">Add Location</button>
-        <input type="text" placeholder="Location Name:" class="trip-name-input" [(ngModel)]="newTripLocationName">
+        <input type="text" placeholder="Location Name:" class="location-name-input" [(ngModel)]="newTripLocationName">
       </div>
       <br>
       <button class="create-trip-btn" (click)="createTrip()">Create</button>
