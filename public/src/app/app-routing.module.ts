@@ -1,13 +1,10 @@
 import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from "@angular/router";
-import {ProfileComponent} from "./profile/profile.component";
-import {LocationComponent} from "./location/location.component";
 
 const appRoutes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'profile'},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'location', component: LocationComponent},
+  {path: '', pathMatch: 'full', redirectTo: 'feed'},
   {path: 'auth', loadChildren: './auth/auth.module#AuthModule'},
+  {path: 'feed', loadChildren: './feed/feed.module#FeedModule'},
 
 ];
 
@@ -20,4 +17,4 @@ const appRoutes: Routes = [
 export class AppRoutingModule {
 }
 
-export const routingComponents = [ProfileComponent, LocationComponent];
+export const routingComponents = [];

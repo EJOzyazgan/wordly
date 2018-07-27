@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AlertsService} from "angular-alert-module";
 import {User} from "../../models/user";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
+import {AlertService} from "ngx-alerts";
 
 @Component({
     selector: 'app-signup',
@@ -16,13 +16,13 @@ export class SignupComponent implements OnInit {
     agreeTos = false;
     show = false;
 
-    constructor(private alertService: AlertsService,
+    constructor(private alertService: AlertService,
                 private authService: AuthService,
                 private router: Router) {
     }
 
     ngOnInit() {
-        this.alertService.setDefaults('timeout', 3);
+
     }
 
     signup() {
@@ -35,25 +35,24 @@ export class SignupComponent implements OnInit {
 
 
             if (this.user.password !== this.tempPassword) {
-                return this.alertService.setMessage("Passwords Do Not Match", 'error');
+                return this.alertService.warning("Passwords Do Not Match");
             } else if (this.user.password.length < 8) {
-                return this.alertService.setMessage("Password must be at least 8 characters long", 'error');
+                return this.alertService.warning("Password must be at least 8 characters long");
             }
-          console.log("sighning up");
             this.authService.checkExists(this.user.email).subscribe(user => {
                if(user[0]){
-                   return this.alertService.setMessage("User with this email exists", 'error');
+                   return this.alertService.warning("User with this email exists");
                }
-              console.log("new user up");
+
                this.authService.signUpUser(this.user).subscribe(user => {
-                   this.alertService.setMessage("Sign Up Successful", 'info');
+                   this.alertService.success("Sign Up Successful");
                    return this.router.navigate(['/auth/login']);
                });
             });
 
         } else {
             this.disableLogin = false;
-            this.alertService.setMessage("Please Fill In All Fields", 'warn');
+            this.alertService.warning("Please Fill In All Fields");
         }
     }
 

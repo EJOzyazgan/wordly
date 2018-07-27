@@ -9,26 +9,26 @@ import {HttpClientModule} from "@angular/common/http";
 import {LocationService} from "./services/location.service";
 import {FileSelectDirective, FileUploadModule} from 'ng2-file-upload';
 import {AuthService} from "./services/auth.service";
-import {AlertsModule, AlertsService} from "angular-alert-module";
+import { AlertModule } from 'ngx-alerts';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents,
-    FileSelectDirective
+    routingComponents
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    AlertsModule.forRoot(),
+    AlertModule.forRoot({maxMessages: 5, timeout: 3000}),
     HttpClientModule
   ],
   providers: [
     TripService,
     LocationService,
-    AuthService,
-    AlertsService
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
