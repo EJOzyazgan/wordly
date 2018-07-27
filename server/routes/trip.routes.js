@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const _ = require('lodash');
 const {mongoose, ObjectID} = require('./../db/mongoose');
 const {Trip} = require('../models/trip');
-const {User} = require('../models/user');
 const {Location} = require('../models/location');
 
 router.post('/create', async(req, res) => {
