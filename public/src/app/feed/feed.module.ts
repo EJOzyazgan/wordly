@@ -6,6 +6,8 @@ import {ProfileComponent} from "./profile/profile.component";
 import {LocationComponent} from "./location/location.component";
 import {FeedComponent} from "./feed.component";
 import {FileSelectDirective} from "ng2-file-upload";
+import { FriendsComponent } from './friends/friends.component';
+import { MainFeedComponent } from './main-feed/main-feed.component';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import {FileSelectDirective} from "ng2-file-upload";
     FeedComponent,
     ProfileComponent,
     LocationComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    FriendsComponent,
+    MainFeedComponent
   ],
   imports: [
     FormsModule,

@@ -1,12 +1,21 @@
-<div class="sidenav">
-  <a [routerLink]="['./']">Feed</a>
-  <br>
-  <a [routerLink]="['./profile']">Profile</a>
-  <br>
-  <a [routerLink]="['./profile']">Friends</a>
-  <br>
+<div class="main-container">
+  <div class="sidenav">
+    <img class="profile-pic" src="{{getUserPic()}}">
+    <div class="nav-links">
+      <div class="nav-link">
+        <a class="link" [routerLink]="['./mainFeed']">Feed</a>
+      </div>
+      <div class="nav-link" >
+        <a class="link" [routerLink]="['./profile']">Profile</a>
+      </div>
+      <div class="nav-link" >
+        <a class="link" [routerLink]="['./friends']">Friends</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <router-outlet></router-outlet>
+  </div>
 </div>
 
-<div class="main">
-  <router-outlet></router-outlet>
-</div>

@@ -1,0 +1,38 @@
+.feed-header {
+  width: fit-content;
+  margin: auto;
+}
+
+.feed-title {
+  width: fit-content;
+  font-size: 30px;
+  font-family: Verdana, serif;
+}
+
+.post-container{
+  margin: 10px auto;
+  width: 100%;
+}
+
+.post {
+  width: fit-content;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 15px;
+  margin: 20px auto;
+  font-size: 15px;
+  font-family: Verdana, serif;
+}
+
+.post-pic {
+  width: 400px;
+  height: 400px;
+  display: block;
+  margin: auto;
+}
+
+.post-text {
+  margin: 10px 0;
+  width: fit-content;
+
+}
