@@ -1,0 +1,19 @@
+<div class="main-container">
+  <p>{{location.name}}</p>
+  <button class="new-post-btn" type="button" (click)="toggleCreatePost()">Add Post</button>
+
+  <div *ngIf="createNewPost" class="create-post-dialog-container">
+    <div class="create-post-dialog">
+      <i class="fa fa-close" (click)="toggleCreatePost()"></i>
+      <br>
+      <input type="text" placeholder="Comment:" class="post-comment-input" [(ngModel)]="newPostText">
+      <br>
+      <input type="file" placeholder="Choose Image" class="post-image-input" [(ngModel)]="newPostPic">
+      <br>
+      <button class="create-trip-btn" (click)="createTrip()">Create</button>
+    </div>
+  </div>
+  <div class="post-container">
+
+  </div>
+</div>

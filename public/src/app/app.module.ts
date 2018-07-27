@@ -6,6 +6,8 @@ import {AppRoutingModule, routingComponents} from "./app-routing.module";
 import {FormsModule} from "@angular/forms";
 import {TripService} from "./services/trip.service";
 import {HttpClientModule} from "@angular/common/http";
+import {LocationService} from "./services/location.service";
+import { LocationComponent } from './location/location.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import {HttpClientModule} from "@angular/common/http";
     HttpClientModule
   ],
   providers: [
-    TripService
+    TripService,
+    LocationService
   ],
   bootstrap: [AppComponent]
 })
