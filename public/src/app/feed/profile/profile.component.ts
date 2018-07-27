@@ -56,6 +56,7 @@ export class ProfileComponent implements OnInit {
     if(this.newLocName !== ""){
       this.locationService.createLocation(trip._id, this.newLocName).subscribe((locations) => {
         this.getLocations(trip);
+        this.newLocName = "";
       });
     }
   }
