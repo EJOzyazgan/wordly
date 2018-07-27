@@ -1,0 +1,42 @@
+<div class="main-container">
+  <button class="new-trip-btn" type="button" (click)="toggleCreateTrip()">New Trip</button>
+
+  <div *ngIf="createNewTrip" class="create-trip-dialog-container">
+    <div class="create-trip-dialog">
+      <i class="fa fa-close" (click)="toggleCreateTrip()"></i>
+      <br>
+      <input type="text" placeholder="Trip Name:" class="trip-name-input" [(ngModel)]="newTripName">
+      <br>
+      <div class="trip-locations">
+        <p *ngFor="let location of newTripLocations">{{location}}</p>
+        <button class="add-location-btn" (click)="addLocation()">Add Location</button>
+        <input type="text" placeholder="Location Name:" class="trip-name-input" [(ngModel)]="newTripLocationName">
+      </div>
+      <br>
+      <button class="create-trip-btn" (click)="createTrip()">Create</button>
+    </div>
+  </div>
+
+  <div class="map-container">
+
+  </div>
+
+  <div class="trips-container">
+    <div class="trip-list">
+      <div class="trip-container" *ngFor="let trip of trips">
+        <div class="trip" (click)="setTrip(trip)">
+          <p>Name: {{trip.name}}</p>
+        </div>
+        <div class="locations-container" *ngIf="isCurrentTrip(trip)">
+          <div>
+            <div class="location-container" *ngFor="let location of trip.locations">
+              <div class="location" (click)="openLocation(location)">
+                <p>Name: {{location.name}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
