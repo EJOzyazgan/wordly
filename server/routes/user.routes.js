@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {mongoose, ObjectID} = require('./../db/mongoose');
 const {User} = require('../models/user');
+const _ = require('lodash');
 
 router.post('/create', async(req, res) => {
     let user = new User({
@@ -29,7 +30,8 @@ router.post('/login', async (req, res) => {
             });
         });
     }).catch((e,doc) => {
-        res.status(400).send();
+        console.log('Hello');
+        res.status(400).send(e);
     });
 });
 
