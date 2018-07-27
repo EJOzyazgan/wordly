@@ -8,12 +8,15 @@
       <br>
       <input type="text" placeholder="Comment:" class="post-comment-input" [(ngModel)]="newPostText">
       <br>
-      <input type="file" placeholder="Choose Image" class="post-image-input" [(ngModel)]="newPostPic">
+      <input type="file" placeholder="Choose Image" name="photo" class="post-image-input" ng2FileSelect [uploader]="uploader">
       <br>
-      <button class="create-trip-btn" (click)="createTrip()">Create</button>
+      <button class="create-trip-btn" (click)="createPost()">Create</button>
     </div>
   </div>
   <div class="post-container">
-
+    <div class="post" *ngFor="let post of posts">
+      <p>{{post.text}}</p>
+      <img src="../../../../{{post.picture}}">
+    </div>
   </div>
 </div>

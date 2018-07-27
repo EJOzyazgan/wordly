@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LocationService} from "../services/location.service";
 import {Location} from "../models/location";
-import {Post} from "../models/post";
+import {FileUploader} from 'ng2-file-upload/ng2-file-upload';
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-location',
@@ -9,30 +10,54 @@ import {Post} from "../models/post";
   styleUrls: ['./location.component.css']
 })
 export class LocationComponent implements OnInit {
-    createNewPost = false;
-    newPostText = "";
-    newPostPic = "";
+  createNewPost = false;
+  newPostText = "";
+  newPostPic = "";
 
-    location = new Location(null);
-    posts = new Post(null);
+  location = new Location(null);
+  posts;
 
-  constructor(private locationService: LocationService) {}
+  uploader: FileUploader = new FileUploader({url: environment.locationUrl + '/upload', itemAlias: 'photo'});
+
+  constructor(private locationService: LocationService) {
+  }
 
   ngOnInit() {
-    this.locationService.getLocation(localStorage.getItem('locationID')).subscribe((location)=> {
+    this.uploader.onAfterAddingFile = (file) => {
+      file.withCredentials = false;
+    };
+
+    this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
+      console.log("ImageUpload:uploaded:", item, status, response);
+      this.locationService.createPost(this.location._id, this.newPostText, response).subscribe((post) => {
+        console.log(post);
+        this.getPosts();
+      })
+    };
+
+    this.locationService.getLocation(localStorage.getItem('locationID')).subscribe((location) => {
       this.location = location;
       this.getPosts();
     })
   }
 
-  toggleCreatePost(){
+  toggleCreatePost() {
     this.createNewPost = !this.createNewPost;
   }
 
-  getPosts(){
+  getPosts() {
     this.locationService.getPosts(this.location._id).subscribe((posts) => {
       this.posts = posts;
     })
   }
 
+  onFileSelected(event) {
+    this.newPostPic = event.target.files[0];
+  }
+
+  createPost() {
+    if (this.newPostPic !== "" || this.newPostText !== "") {
+      this.uploader.uploadAll();
+    }
+  }
 }

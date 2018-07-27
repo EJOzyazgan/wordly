@@ -7,12 +7,13 @@ import {FormsModule} from "@angular/forms";
 import {TripService} from "./services/trip.service";
 import {HttpClientModule} from "@angular/common/http";
 import {LocationService} from "./services/location.service";
-import { LocationComponent } from './location/location.component';
+import {FileSelectDirective, FileUploadModule} from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,
