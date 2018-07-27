@@ -1,18 +1,32 @@
 const express = require('express');
 const router = express.Router();
-const _ = require('lodash');
-const {mongoose, ObjectID} = require('mongoose');
-const {Trip} = require('../models/trip');
+const {mongoose, ObjectID} = require('./../db/mongoose');
 const {Location} = require('../models/location');
+const {Post} = require('../models/post');
 
-router.post('/location/create', async(req, res) => {
-    let body = _.pick(req.body, ['name', 'tripID']);
-    let location = new Location(body);
-
-    location.save().then(trip => {
-
+router.post('/create', async(req, res) => {
+    let location = new Location({
+        name: req.body.name,
+        tripID: req.body.tripID
     });
-    res.send(location);
+    location.save();
+});
+
+router.post('/post/create', async(req, res) => {
+    let post = new Post({
+        text: req.body.text,
+        picture: req.body.picture,
+        locationID: req.body.locationID
+    });
+
+    post.save();
+    res.send(post);
+});
+
+router.post('/get/posts', async(req, res) => {
+    Post.find({locationID: req.body.locationID}).then(posts => {
+        res.send(posts);
+    })
 });
 
 router.post('/get/tripId', async(req, res) => {
@@ -25,10 +39,6 @@ router.post('/get/location', async(req, res) => {
     Location.findById(req.body.locationID).then(location => {
         res.send(location);
     })
-});
-
-router.delete('/location/delete', async(req, res) => {
-    res.send("Deleted location from trip");
 });
 
 module.exports = router;
