@@ -4,12 +4,14 @@ const {mongoose, ObjectID} = require('./../db/mongoose');
 const {Location} = require('../models/location');
 const {Post} = require('../models/post');
 
+
 router.post('/create', async(req, res) => {
     let location = new Location({
         name: req.body.name,
         tripID: req.body.tripID
     });
     location.save();
+    res.send(location);
 });
 
 router.post('/post/create', async(req, res) => {
@@ -41,8 +43,21 @@ router.post('/get/location', async(req, res) => {
     })
 });
 
-router.delete('/delete', async(req, res) => {
+router.post('/delete', async(req, res) => {
+    Post.deleteMany({locationID: req.body.locationID}).then(post => {
 
+    });
+    Location.deleteOne({_id: req.body.locationID}).then(loc => {
+
+    });
+
+    res.send("Done");
+});
+
+router.post('/post/delete', async(req, res) => {
+    Post.deleteOne({_id: req.body.postID}).then(post => {
+        res.send(post);
+    });
 });
 
 module.exports = router;
