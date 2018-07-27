@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const {mongoose, ObjectID} = require('./../db/mongoose');
-const {Location} = require('../models/location');
 const {User} = require('../models/user');
 
 router.post('/create', async(req, res) => {
@@ -32,6 +31,14 @@ router.post('/login', async (req, res) => {
     }).catch((e,doc) => {
         res.status(400).send();
     });
+});
+
+router.post('/exists', (req, res) => {
+    User.find({email: req.body.email}).then((users) => {
+        res.send(users);
+    }).catch((e) => {
+        res.status(400).send(e);
+    })
 });
 
 module.exports = router;
