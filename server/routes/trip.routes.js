@@ -3,6 +3,7 @@ const router = express.Router();
 const {mongoose, ObjectID} = require('./../db/mongoose');
 const {Trip} = require('../models/trip');
 const {Location} = require('../models/location');
+const {Post} = require('../models/post');
 
 router.post('/create', async(req, res) => {
     let trip = new Trip({
@@ -28,16 +29,21 @@ router.post('/get/userId', async(req, res) => {
    })
 });
 
-router.delete('/delete', async(req, res) => {
-    res.send("Deleted trip");
-});
+router.post('/delete', async(req, res) => {
+    Trip.deleteOne({_id: req.body.tripID}).then(trips => {
 
-router.post('/picture/add', async(req, res) => {
-    res.send("Added new picture to trip");
-});
+    });
+    Location.find({tripID: req.body.tripID}).then(locs => {
+        for(let loc of locs) {
+            Post.deleteMany({locationID: loc._id}).then(post => {
 
-router.delete('/picture/delete', async(req, res) => {
-    res.send("Deleted picture from trip");
+            });
+            Location.deleteOne({_id: loc._id}).then(loc => {
+
+            });
+        }
+    });
+    res.send("Done");
 });
 
 module.exports = router;
