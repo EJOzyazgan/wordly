@@ -27,5 +27,24 @@
 .friend {
   display: flex;
   cursor: pointer;
+}
 
+.add-friend-button {
+  float:left;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 4px 2px;
+  font-family: Verdana, serif;
+  transition-duration: 0.4s;
+  border: 2px solid #89CFF0;
+}
+
+.add-friend-button:hover {
+  background-color: #89CFF0;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 4px 2px;
+  font-family: Verdana, serif;
+  color: white;
 }

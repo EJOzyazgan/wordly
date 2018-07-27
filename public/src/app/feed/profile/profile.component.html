@@ -33,9 +33,11 @@
         <div class="locations-container" *ngIf="isCurrentTrip(trip)">
           <div>
             <div class="location-container" *ngFor="let location of locations">
+              <div>
               <button class="location" (click)="openLocation(location)">
                 {{location.name}}
               </button>
+              </div>
             </div>
           </div>
         </div>

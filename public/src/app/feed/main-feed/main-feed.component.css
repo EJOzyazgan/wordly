@@ -34,6 +34,7 @@
 
 .post-text {
   margin: 10px 0;
-  width: fit-content;
-
+  font-family: Verdana, serif;
+  text-align: center;
+  font-size: 18px;
 }
