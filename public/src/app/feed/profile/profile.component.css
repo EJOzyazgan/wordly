@@ -1,5 +1,6 @@
 .trip-container{
   border: gray 1px solid;
+  width: 90%;
 }
 
 .trip{
@@ -31,4 +32,71 @@
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+}
+
+.new-trip-btn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 8px 22px;
+  font-family: Verdana, serif;
+  transition-duration: 0.4s;
+  border: 2px solid #89CFF0;
+  font-weight: 550;
+}
+
+.new-trip-btn:hover {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  background-color: #89CFF0;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 8px 22px;
+  font-family: Verdana, serif;
+  color: white;
+  font-weight: 550;
+}
+
+.delete-trip-btn {
+  margin: 20px;
+  background-color: red;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 5px 4px;
+  font-family: Verdana, serif;
+  transition-duration: 0.4s;
+  border: 2px solid red;
+  font-weight: 550;
+  color: white;
+}
+
+.delete-trip-btn:hover {
+  margin: 20px;
+  background-color: red;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 5px 22px;
+  font-family: Verdana, serif;
+  font-weight: 550;
+  color: white;
+}
+
+.trip-name {
+  font-family: Verdana, serif;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -5px;
+  width: fit-content;
+  font-size: 30px;
+}
+
+.location {
+  float:left;
 }

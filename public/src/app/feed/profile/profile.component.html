@@ -24,16 +24,16 @@
   <div class="trips-container">
     <div class="trip-list">
       <div class="trip-container" *ngFor="let trip of trips">
-        <div class="trip" (click)="setTrip(trip)">
-          <p>Trip: {{trip.name}}</p>
+        <div class="trip-name" (click)="setTrip(trip)">
+          {{trip.name}}
           <button class="delete-trip-btn" (click)="deleteTrip(trip)">Delete</button>
         </div>
         <div class="locations-container" *ngIf="isCurrentTrip(trip)">
           <div>
             <div class="location-container" *ngFor="let location of locations">
-              <div class="location" (click)="openLocation(location)">
-                <p>Location: {{location.name}}</p>
-              </div>
+              <button class="location" (click)="openLocation(location)">
+                {{location.name}}
+              </button>
             </div>
           </div>
         </div>

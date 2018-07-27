@@ -10,7 +10,7 @@
     <div class="create-post-dialog">
       <i class="fa fa-close" (click)="toggleCreatePost()"></i>
       <br>
-      <input type="text" placeholder="Comment:" class="post-comment-input" [(ngModel)]="newPostText">
+      <textarea placeholder="Comment:" class="post-comment-input" [(ngModel)]="newPostText"></textarea>
       <br>
       <input type="file" placeholder="Choose Image" name="photo" class="post-image-input" ng2FileSelect [uploader]="uploader">
       <br>
