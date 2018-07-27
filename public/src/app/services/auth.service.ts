@@ -4,37 +4,49 @@ import {environment} from "../../environments/environment";
 
 @Injectable()
 export class AuthService {
-    authUrl = environment.authUrl;
+  authUrl = environment.authUrl;
 
-    constructor(private http: HttpClient) {
-    }
+  constructor(private http: HttpClient) {
+  }
 
-    signUpUser(user) {
-        return this.http.post(this.authUrl + '/create', user);
-    }
+  signUpUser(user) {
+    return this.http.post(this.authUrl + '/create', user);
+  }
 
-    loginUser(email, password) {
-        return this.http.post(this.authUrl + '/login', {email: email, password: password});
-    }
+  loginUser(email, password) {
+    return this.http.post(this.authUrl + '/login', {email: email, password: password});
+  }
 
-    updateUser(user) {
-        return this.http.patch(this.authUrl + '/update', user);
-    }
+  updateUser(user) {
+    return this.http.patch(this.authUrl + '/update', user);
+  }
 
-    checkExists(email) {
-      console.log(this.authUrl);
-        return this.http.post(this.authUrl + '/exists', {email: email});
-    }
+  checkExists(email) {
+    console.log(this.authUrl);
+    return this.http.post(this.authUrl + '/exists', {email: email});
+  }
 
-    getUser(id){
-        return this.http.post(this.authUrl + '/get', {userID: id});
-    }
+  getUser(id) {
+    return this.http.post(this.authUrl + '/get', {userID: id});
+  }
 
-    getByToken(token){
-        return this.http.post(this.authUrl + '/get/token', {token: token});
-    }
+  getUsers(id) {
+    return this.http.post(this.authUrl + '/get/users',{userID: id});
+  }
 
-    resetPasswordEmail(email){
-        return this.http.post(this.authUrl + '/forgot', {email: email});
-    }
+  getFriends(id) {
+    return this.http.post(this.authUrl + '/get/friends', {userID: id});
+  }
+
+  addFriend(id, friendId) {
+    return this.http.post(this.authUrl + '/add/friend', {userID: id, friendID: friendId});
+  }
+
+  getByToken(token) {
+    return this.http.post(this.authUrl + '/get/token', {token: token});
+  }
+
+  resetPasswordEmail(email) {
+    return this.http.post(this.authUrl + '/forgot', {email: email});
+  }
 }

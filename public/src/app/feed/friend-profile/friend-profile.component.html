@@ -1,0 +1,29 @@
+<div class="main-container">
+  <div class="friend-header">
+    <p class="friend-title">{{user.name}}</p>
+    <hr>
+  </div>
+
+  <div class="map-container">
+
+  </div>
+
+  <div class="trips-container">
+    <div class="trip-list">
+      <div class="trip-container" *ngFor="let trip of trips">
+        <div class="trip" (click)="setTrip(trip)">
+          <p>Trip: {{trip.name}}</p>
+        </div>
+        <div class="locations-container" *ngIf="isCurrentTrip(trip)">
+          <div>
+            <div class="location-container" *ngFor="let location of locations">
+              <div class="location" (click)="openLocation(location)">
+                <p>Location: {{location.name}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
