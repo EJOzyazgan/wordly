@@ -1,3 +1,66 @@
+.header-info{
+  display: block;
+  margin: auto;
+  width: fit-content;
+}
+
+.location-name {
+  font-family: Verdana, serif;;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -5px;
+  width: fit-content;
+  font-size: 30px;
+}
+
+.new-post-btn {
+  margin: 20px;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 8px 22px;
+  font-family: Verdana, serif;;
+  transition-duration: 0.4s;
+  border: 2px solid #89CFF0;
+  font-weight: 550;
+}
+
+.new-post-btn:hover {
+  margin: 20px;
+  background-color: #89CFF0;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 8px 22px;
+  font-family: Verdana, serif;;
+  color: white;
+  font-weight: 550;
+}
+
+.delete-location-btn {
+  margin: 20px;
+  background-color: red;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 8px 4px;
+  font-family: Verdana, serif;
+  transition-duration: 0.4s;
+  border: 2px solid red;
+  font-weight: 550;
+  color: white;
+}
+
+.delete-location-btn:hover {
+  margin: 20px;
+  background-color: red;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 8px 22px;
+  font-family: Verdana, serif;
+  color: white;
+  font-weight: 550;
+}
+
 .create-post-dialog-container{
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -6,6 +69,8 @@
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
+  display: block;
+  margin: auto;
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -17,4 +82,46 @@
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+}
+
+.img-resizer img {
+  max-height: 400px;
+  max-width: 400px;
+  display: block;
+  margin: auto;
+}
+
+.text-resizer {
+  text-align: center;
+  font-family: Verdana, serif;
+  font-size: 18px;
+}
+
+.post {
+  width: fit-content;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 15px;
+  margin: 20px auto;
+}
+
+.delete-post-btn {
+  background-color: white;
+  border-radius: 4px;
+  position: relative;
+  bottom: 15px;
+  float: right;
+  font-family: Verdana, serif;
+  transition-duration: 0.4s;
+  border: 2px solid red;
+  color: red;
+}
+
+.delete-post-btn:hover {
+  background-color: red;
+  position: relative;
+  bottom: 15px;
+  float: right;
+  font-family: Verdana, serif;
+  color: white;
 }
