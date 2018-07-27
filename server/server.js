@@ -21,7 +21,6 @@ app.use(function (req,res,next) {
 app.use('/trip', trip);
 app.use('/location', location);
 
-
 app.listen(port, () => {
     console.log(`server is listening on ${port}`)
 });

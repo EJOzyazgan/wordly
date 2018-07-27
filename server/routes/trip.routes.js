@@ -1,24 +1,30 @@
 const express = require('express');
 const router = express.Router();
 const _ = require('lodash');
-const {mongoose, ObjectID} = require('mongoose');
+const {mongoose, ObjectID} = require('../db/mongoose');
 const {Trip} = require('../models/trip');
 const {User} = require('../models/user');
 const {Location} = require('../models/location');
 
 router.post('/create', async(req, res) => {
-    let body = _.pick(req.body, ['name', 'userId']);
-    let trip = new Trip(body);
+    console.log(req.body);
+    let trip = new Trip({
+        name: req.body.name,
+        userID: req.body.userID
+    });
+    console.log(trip);
 
     trip.save().then(trip => {
-        for(let i = 0; i < req.body.locations.length; i++) {
-            let loc = new Location();
-            loc.name = req.body.locations[i];
-            loc.tripID = trip._id;
+        for(let locName of req.body.locations){
+            let loc = new Location({
+                name: locName,
+                tripID: trip._id
+            });
             loc.save();
         }
+        res.send(trip);
     });
-    res.send(trip);
+
 });
 
 router.delete('/delete', async(req, res) => {

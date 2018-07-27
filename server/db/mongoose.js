@@ -1,5 +1,12 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/worldly');
+mongoose.connect('mongodb://localhost:27017/worldly', { useNewUrlParser: true }, (err, db) => {
+    if(err){
+        console.log("DB Error", err);
+        return;
+    }
+
+    console.log("Connected");
+});
 
 module.exports = {mongoose};
