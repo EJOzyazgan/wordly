@@ -41,4 +41,8 @@ router.post('/get/location', async(req, res) => {
     })
 });
 
+router.delete('/delete', async(req, res) => {
+    res.send("Deleted trip");
+});
+
 module.exports = router;

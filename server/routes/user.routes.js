@@ -43,4 +43,12 @@ router.post('/exists', (req, res) => {
     })
 });
 
+router.post('/get', (req, res) => {
+    User.findById(req.body.userID).then((user) => {
+        res.send(user);
+    }).catch((e) => {
+        res.status(400).send(e);
+    })
+});
+
 module.exports = router;
