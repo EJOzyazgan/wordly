@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {LocationService} from "../services/location.service";
-import {Location} from "../models/location";
+import {LocationService} from "../../services/location.service";
+import {Location} from "../../models/location";
 import {FileUploader} from 'ng2-file-upload/ng2-file-upload';
-import {environment} from "../../environments/environment";
+import {environment} from "../../../environments/environment";
+import {AlertService} from "ngx-alerts";
 
 @Component({
   selector: 'app-location',
@@ -19,7 +20,8 @@ export class LocationComponent implements OnInit {
 
   uploader: FileUploader = new FileUploader({url: environment.locationUrl + '/upload', itemAlias: 'photo'});
 
-  constructor(private locationService: LocationService) {
+  constructor(private locationService: LocationService,
+              private alertService: AlertService) {
   }
 
   ngOnInit() {
@@ -30,9 +32,13 @@ export class LocationComponent implements OnInit {
     this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
       console.log("ImageUpload:uploaded:", item, status, response);
       this.locationService.createPost(this.location._id, this.newPostText, response).subscribe((post) => {
-        console.log(post);
         this.getPosts();
-      })
+        this.alertService.success("Post Created");
+      });
+
+      this.createNewPost = false;
+      this.newPostText = "";
+      this.newPostPic = "";
     };
 
     this.locationService.getLocation(localStorage.getItem('locationID')).subscribe((location) => {
